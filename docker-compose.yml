@@ -1,0 +1,64 @@
+services:
+  # Frontend React
+  react:
+    build:
+      context: ./html/react
+      dockerfile: docker/Dockerfile
+    deploy:
+      replicas: 3 # Três instâncias para load balancing
+    networks:
+      - web
+
+  react-test:
+    build:
+      context: ./html/react
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8089:80"
+    networks:
+      - web
+
+  # API .NET
+  dotnet:
+    build:
+      context: ./apis/dotnet
+      dockerfile: docker/Dockerfile
+    deploy:
+      replicas: 3 # Três instâncias para load balancing
+    networks:
+      - web
+
+  # API PHP (Laravel)
+  # php:
+  #   build:
+  #     context: ./apis/php/docker
+  #     dockerfile: Dockerfile
+  #   deploy:
+  #     replicas: 3 # Três instâncias para load balancing
+  #   networks:
+  #     - web
+
+  # API Python
+  python:
+    build:
+      context: ./apis/python
+      dockerfile: docker/Dockerfile
+    deploy:
+      replicas: 3 # Três instâncias para load balancing
+    networks:
+      - web
+
+  # Nginx Proxy Reverso
+  nginx:
+    image: nginx:alpine
+    container_name: nginx_proxy
+    ports:
+      - "8088:80" # Porta pública do Nginx
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    networks:
+      - web
+
+networks:
+  web:
+    driver: bridge

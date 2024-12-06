@@ -1,0 +1,15 @@
+services:
+  # Serviço para construir e rodar a aplicação React
+  react-app:
+    image: node:lts-alpine
+    working_dir: /app
+    stdin_open: true  # Permite interação com o terminal
+    tty: true  # Necessário para manter o terminal ativo
+    ports:
+      - "3000:3000"
+    volumes:
+      - ../microfrontend:/app
+    command: sh -c "npm install && npm start"  # Inicia o servidor React
+    environment:
+      - NODE_ENV=development
+    user: "${LOCAL_UID}:${LOCAL_GID}"  # Define o usuário como o da sua máquina

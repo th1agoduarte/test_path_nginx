@@ -1,0 +1,88 @@
+# Visual Studio
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.pdb
+*.cache
+*.log
+*.vspscc
+*.vssscc
+_TeamCode/
+
+# Visual Studio Code
+.history/
+.idea/
+*.code-workspace
+*.swp
+*.swo
+
+# Build results
+bin/
+obj/
+out/
+*.exe
+*.dll
+*.so
+*.dylib
+*.testresults
+*.app
+*.ipa
+
+# Include lock files only if you have a global strategy
+project.lock.json
+project.fragment.lock.json
+
+# Avoid including databases or data files
+*.db
+*.mdf
+*.ldf
+
+# NPM files (if applicable)
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Application Insights
+ApplicationInsights.config
+ApplicationInsights*.config
+
+# Rider files
+.idea/
+
+# Resharper
+_ReSharper*/
+*.DotSettings.user
+*.DotSettings
+
+# Entity Framework
+*.edmx.diagram
+*.edmx
+*.efmodel.diagram
+*.efmodel
+
+# NuGet
+*.nupkg
+packages/
+*.snupkg
+
+# Azure Functions
+.local.settings.json
+
+# Other
+*.vspscc
+*.vssscc
+*.userosscache
+*.sln.docstates
+*.userprefs
+*.suo
+project.lock.json
+project.fragment.lock.json
