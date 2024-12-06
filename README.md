@@ -46,18 +46,19 @@ Backends .NET e Python.
 Proxy reverso com Nginx.
 
 Passo 4: Testar os Serviços
-Frontend React:
-Rota principal: http://localhost:8088/enviroment_react/
-Backend .NET:
-Rota principal: http://localhost:8088/enviroment_python/api/v1/test
-Backend Python:
-Rota principal: http://localhost:8088/enviroment_python/api/v1/test
-Rota principal: http://localhost:8088/enviroment_python/api/v1/test2
+### Frontend React:
+- Rota principal: http://localhost:8088/enviroment_react/
+### Backend .NET:
+- Rota principal: http://localhost:8088/enviroment_python/api/v1/test
 
-Load Balancer e Escalabilidade
-O Nginx está configurado para fazer balanceamento de carga entre múltiplas réplicas dos serviços. A configuração padrão do balanceamento de carga pode ser encontrada no arquivo nginx/nginx.conf.
+### Backend Python:
+- Rota principal: http://localhost:8088/enviroment_python/api/v1/test
+- Rota principal: http://localhost:8088/enviroment_python/api/v1/test2
 
-Exemplo de balanceamento para o serviço React:
+## Load Balancer e Escalabilidade
+- O Nginx está configurado para fazer balanceamento de carga entre múltiplas réplicas dos serviços. A configuração padrão do balanceamento de carga pode ser encontrada no arquivo nginx/nginx.conf.
+
+### Exemplo de balanceamento para o serviço React:
 ```
 nginx
 upstream react_front {
@@ -66,7 +67,7 @@ upstream react_front {
     server react3:80;
 }
 ```
-##Estrutura de Diretórios
+### Estrutura de Diretórios
 ```
 ├── apis/
 │   ├── dotnet/   # API .NET
@@ -78,7 +79,7 @@ upstream react_front {
 ├── docker-compose.yml
 └── README.md
 ```
-Adicionando Novos Projetos
+## Adicionando Novos Projetos
 Passo 1: Criar o Projeto
 Frontend React:
 Siga o guia oficial para criar um projeto React.
@@ -106,15 +107,15 @@ location /enviroment_new/ {
     proxy_set_header X-Forwarded-Proto $scheme;
 }
 ```
-Reinicie o serviço Nginx após salvar as alterações:
+- Reinicie o serviço Nginx após salvar as alterações:
 docker-compose restart nginx
 
-Contribuições
+## Contribuições
 Sinta-se à vontade para contribuir com melhorias no projeto!
 
-Licença
+## Licença
 Este projeto está licenciado sob a MIT License.
 
-Contato
+## Contato
 E-mail: thiago.duarte.q@gmail.com
 GitHub: th1agoduarte
