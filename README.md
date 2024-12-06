@@ -32,10 +32,10 @@ cd seu-repositorio
 
 Passo 2: Configurar as Permissões para o Usuário Atual
 Certifique-se de que o usuário atual tenha acesso às pastas e arquivos criados dentro dos contêineres:
-
+```
 export LOCAL_UID=$(id -u)
 export LOCAL_GID=$(id -g)
-
+```
 Passo 3: Subir os Contêineres
 Execute o comando para iniciar todos os serviços:
 docker compose up -d --build
@@ -58,7 +58,7 @@ Load Balancer e Escalabilidade
 O Nginx está configurado para fazer balanceamento de carga entre múltiplas réplicas dos serviços. A configuração padrão do balanceamento de carga pode ser encontrada no arquivo nginx/nginx.conf.
 
 Exemplo de balanceamento para o serviço React:
-
+```
 nginx
 upstream react_front {
     server react1:80;
@@ -66,7 +66,8 @@ upstream react_front {
     server react3:80;
 }
 Estrutura de Diretórios
-
+```
+```
 ├── apis/
 │   ├── dotnet/   # API .NET
 │   └── python/   # API Python (Flask)
@@ -76,7 +77,7 @@ Estrutura de Diretórios
 │   ├── nginx.conf  # Configuração do Nginx
 ├── docker-compose.yml
 └── README.md
-
+```
 Adicionando Novos Projetos
 Passo 1: Criar o Projeto
 Frontend React:
@@ -92,8 +93,7 @@ Passo 3: Configurar o Nginx
 Adicione as rotas no nginx.conf para o novo serviço.
 
 Exemplo para um novo backend:
-
-nginx
+```nginx
 upstream new_backend {
     server new-backend:80;
 }
@@ -105,7 +105,7 @@ location /enviroment_new/ {
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     proxy_set_header X-Forwarded-Proto $scheme;
 }
-
+```
 Reinicie o serviço Nginx após salvar as alterações:
 docker-compose restart nginx
 
